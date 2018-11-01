@@ -1,0 +1,85 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:passwordManager.Styles"
+                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+
+    <Style x:Key="BaseBlock" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{StaticResource Regular}" />
+        <Setter Property="FontFamily" Value="{StaticResource BaseFont}" />
+    </Style>
+
+    <Style x:Key="BaseBox" TargetType="TextBox">
+        <Setter Property="FontSize" Value="{StaticResource Regular}" />
+        <Setter Property="FontFamily" Value="{StaticResource BaseFont}" />
+    </Style>
+
+    <Style x:Key="LabelBlock" TargetType="TextBlock" BasedOn="{StaticResource BaseBlock}">
+        <Setter Property="TextAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="TextBoxInfo" TargetType="TextBox" BasedOn="{StaticResource BaseBox}">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="IsReadOnly" Value="True" />
+        <Setter Property="Margin" Value="20 0 20 0" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+    </Style>
+
+    <!-- list items -->
+    <Style x:Key="ListHeader" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{StaticResource Regular}" />
+        <Setter Property="FontFamily" Value="{StaticResource BaseFont}" />
+        <Setter Property="FontWeight" Value="{StaticResource SemiBold}" />
+        <Setter Property="Margin" Value="0 0 0 5" />
+    </Style>
+
+    <Style x:Key="ListContent" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource BaseFont}" />
+        <Setter Property="FontSize" Value="{StaticResource Medium}" />
+        <Setter Property="Opacity" Value="0.8" />
+    </Style>
+    
+    <!-- СТИЛЬ ДЛЯ ТЕМНОГО ФОНА ТЕКСТА -->
+    <!-- заголовок форм -->
+    <Style x:Key="TitleForm" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource White}"/>
+        <Setter Property="FontSize" Value="{StaticResource Lagre}" />
+        <Setter Property="FontFamily" Value="{StaticResource BaseFont}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0 20 0 0" />
+    </Style>
+    <!-- поле ввода -->
+    <Style x:Key="TextBoxWriter" TargetType="TextBox"
+           BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+        <Setter Property="FontFamily" Value="{StaticResource BaseFont}" />
+        <Setter Property="FontSize" Value="{StaticResource Regular}" />
+        <Setter Property="Margin" Value="0 10 0 0" />
+        <Setter Property="Foreground" Value="{StaticResource White}" />
+        <Setter Property="materialDesign:TextFieldAssist.TextBoxViewMargin" Value="1 0 1 0" />
+        <Setter Property="materialDesign:HintAssist.FloatingScale" Value="0.50" />
+    </Style>
+    <!-- поле ввода пароля -->
+    <Style x:Key="PasswordBoxWriter" TargetType="PasswordBox"
+           BasedOn="{StaticResource MaterialDesignFloatingHintPasswordBox}">
+        <Setter Property="FontFamily" Value="{StaticResource BaseFont}" />
+        <Setter Property="FontSize" Value="{StaticResource Regular}" />
+        <Setter Property="Margin" Value="0 10 0 0" />
+        <Setter Property="Foreground" Value="{StaticResource White}" />
+        <Setter Property="materialDesign:TextFieldAssist.TextBoxViewMargin" Value="1 0 1 0" />
+        <Setter Property="materialDesign:HintAssist.FloatingScale" Value="0.50" />
+    </Style>
+    <!-- поле многострочного ввода -->
+    <Style x:Key="TextAreaWriter" TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextAreaTextBox}">
+        <Setter Property="Margin" Value="0 20 0 0" />
+        <Setter Property="FontSize" Value="{StaticResource Regular}" />
+        <Setter Property="FontFamily" Value="{StaticResource BaseFont}" />
+        <Setter Property="Height" Value="120" />
+        <Setter Property="Foreground" Value="{StaticResource White}" />
+        <Setter Property="AcceptsReturn" Value="True" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+    </Style>
+    
+</ResourceDictionary>

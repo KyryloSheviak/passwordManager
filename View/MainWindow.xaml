@@ -1,0 +1,135 @@
+﻿<Window x:Class="passwordManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:passwordManager"
+        mc:Ignorable="d"
+        
+        xmlns:res="clr-namespace:passwordManager.Properties"
+        
+        WindowStyle="None" WindowStartupLocation="CenterScreen"
+        BorderThickness="0.5" ResizeMode="NoResize"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Password manager" Height="550" Width="1100">
+
+    <x:Code>
+        <![CDATA[            
+        private void DragMove(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+    ]]>
+    </x:Code>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="280" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <!-- Цвета колонок -->
+        <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Background="{StaticResource DarkBlue}" />
+        <Grid Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Background="{StaticResource LightBlue}" />
+        <Grid Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Background="{StaticResource White}" />
+        <!-- ОбЪеденение для перетаскивания -->
+        <Grid Grid.ColumnSpan="3" Background="Transparent" MouseLeftButtonDown="DragMove" />
+        <!-- Заголовок  -->
+        <TextBlock Style="{StaticResource TitleProgram}" />
+        <!-- Системные кнопки -->
+        <StackPanel Grid.Column="2" Grid.Row="0"  Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 8 8 0">
+            <Button Style="{StaticResource ButtonGray}" Tag="{StaticResource IconLock}" ToolTip="{x:Static res:Resources.toolTipBlock}" Command="{Binding BtnLock}" />
+            <Button Style="{StaticResource ButtonGray}" Tag="{StaticResource IconWindowMinimize}" ToolTip="{x:Static res:Resources.toolTipSysTurn}" Command="{Binding BtnHide}" />
+            <Button Style="{StaticResource ButtonRed}" Tag="{StaticResource IconWindowClose}" ToolTip="{x:Static res:Resources.toolTipSysClose}" Command="{Binding BtnClose}" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <Line Style="{StaticResource Separator}" />
+            <Button Style="{StaticResource MenuButton}" Tag="{StaticResource IconPlus}" Content="{x:Static res:Resources.btnAddNew}" Command="{Binding BtnNew}" />
+            <Button Style="{StaticResource MenuButton}" Tag="{StaticResource IconKey}"  Content="{x:Static res:Resources.btnAllItem}" />
+            <Button Style="{StaticResource MenuButton}" Tag="{StaticResource IconArchive}" Content="{x:Static res:Resources.btnArchive}" />
+            <Line Style="{StaticResource Separator}" />
+            <Button Style="{StaticResource MenuButton}" Tag="{StaticResource IconSettings}" Content="{x:Static res:Resources.btnSettings}" />
+            <Button Style="{StaticResource MenuButton}" Tag="{StaticResource IconInfo_1}" Content="{x:Static res:Resources.btnInfo}" />
+            
+            <TextBlock VerticalAlignment="Bottom" Style="{StaticResource About}"
+                   Text="{Binding StringFormat=Number of records: {0}, ElementName=listCollection, Path=Items.Count}" />
+                
+        </StackPanel>
+        
+        <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource About}" />
+        <!-- КОНЕЦ ЛЕВОГО МЕНЮ -->
+
+        <!-- ПОИСК И СПИСОК-->
+        <TextBox Grid.Column="1" Grid.Row="0" Margin="20 0 20 0" FontSize="16"
+                 materialDesign:HintAssist.Hint="Search..." Foreground="White" />
+        <ListBox Grid.Column="1" Grid.Row="1" Name="listCollection" VirtualizingPanel.ScrollUnit="Pixel">
+            <StackPanel Margin="12 0 0 0">
+                <TextBlock Text="Goggle inc" Style="{StaticResource ListHeader}"  />
+                <TextBlock Text="sdgdfbg" Style="{StaticResource ListContent}" />
+            </StackPanel>
+            
+            <TextBlock HorizontalAlignment="Center" Width="280" Style="{StaticResource About}" Margin="0"
+                       Text="{Binding StringFormat=Number of records: {0}, ElementName=listCollection, Path=Items.Count}" />
+        </ListBox>
+
+        <!-- ОПИСАНИЕ -->
+        <Grid Grid.Column="2" Grid.Row="1" DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="65" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="auto" MinHeight="50" />
+                <RowDefinition Height="auto" MinHeight="50" />
+                <RowDefinition Height="auto" MinHeight="50" />
+                <RowDefinition Height="auto" MinHeight="50" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="0" Grid.ColumnSpan="3" FontSize="24"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Text="Apple" />
+
+            <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource LabelBlock}" Text="{x:Static res:Resources.lblLogin}" />
+
+            <TextBox Grid.Column="1" Grid.Row="1" Style="{StaticResource TextBoxInfo}" 
+                     Text="{Binding ElementName=listCollection, Path=SelectedItem}" />
+            
+            <Button Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonGray}" Tag="{StaticResource IconCopy}" ToolTip="{x:Static res:Resources.toolTipCopy}" 
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+
+            <TextBlock Grid.Column="0" Grid.Row="2" Style="{StaticResource LabelBlock}" Text="{x:Static res:Resources.lblPass}" />
+            <TextBox Grid.Column="1" Grid.Row="2" Style="{StaticResource TextBoxInfo}" Text="123456"  />
+            <Button Grid.Column="2" Grid.Row="2" Style="{StaticResource ButtonGray}" Tag="{StaticResource IconCopy}" ToolTip="{x:Static res:Resources.toolTipCopy}" 
+                    VerticalAlignment="Center" HorizontalAlignment="Left" />
+
+            <TextBlock Grid.Column="0" Grid.Row="3" Style="{StaticResource LabelBlock}" Text="{x:Static res:Resources.lblWeb}" />
+            <TextBox Grid.Column="1" Grid.Row="3" Style="{StaticResource TextBoxInfo}" Text="apple.com" />
+            <Button Grid.Column="2" Grid.Row="3" Style="{StaticResource ButtonGray}" Tag="{StaticResource IconLaunch}" ToolTip="{x:Static res:Resources.toolTipWebsite}" 
+                    VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="4" Style="{StaticResource LabelBlock}" Text="{x:Static res:Resources.lblNote}"  />
+            <TextBox Grid.Column="1" Grid.Row="4" Style="{StaticResource TextBoxInfo}"
+                     AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
+                     MaxHeight="200"
+                     Text="Первый вопрос 1 - ответ Турция Первый вопрос 1 - 
+                     ответ Турция Первый вопрос 1 - ответ Турция Первый вопрос 1 -
+                     ответ Турция Первый вопрос 1 - ответ Турция Первый вопрос 1 - 
+                     ответ Турция Первый вопрос 1 - ответ Турция Первый вопрос 1" />
+        </Grid>
+
+        <StackPanel Grid.Column="2" Grid.Row="1"  Margin="0 0 8 8"
+                    VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Style="{StaticResource ButtonGray}" Tag="{StaticResource IconPencil}" ToolTip="{x:Static res:Resources.toolTipEdit}" Command="{Binding BtnEdit}" />
+            <Button Style="{StaticResource ButtonRed}" Tag="{StaticResource IconDelete}" ToolTip="{x:Static res:Resources.toolTipDel}" />
+        </StackPanel>
+
+    </Grid>
+</Window>

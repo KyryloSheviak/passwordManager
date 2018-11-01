@@ -1,0 +1,161 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:passwordManager.Styles"
+                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+
+    <!-- стиль для иконки копировать -->
+    <Style x:Key="CopyIcon" TargetType="materialDesign:PackIcon">
+        <Setter Property="Width" Value="{StaticResource IconSize}" />
+        <Setter Property="Height" Value="{StaticResource IconSize}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Kind" Value="ContentCopy" />
+        <Setter Property="Foreground" Value="{StaticResource IconCopy}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+
+    <!-- стиль для кнопок бокового меню -->
+    <Style x:Key="BaseButton" TargetType="Button" 
+           BasedOn="{StaticResource MaterialDesignFlatButton}">
+        <Setter Property="Height" Value="40" />
+        <Setter Property="FontFamily" Value="{StaticResource BaseFont}" />
+        <Setter Property="FontSize" Value="{StaticResource Regular}" />
+        <Setter Property="Foreground" Value="{StaticResource White}" />
+        <Setter Property="FontWeight" Value="{StaticResource BaseWeight}" />
+        <Setter Property="Margin" Value="0 5 0 5" />
+        <!-- изменение цвета иконок при наведении -->
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource White}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="False">
+                <Setter Property="Foreground" Value="{StaticResource IconColor}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- описание структуры кнопки -->
+    <Style x:Key="MenuButton" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Button Style="{StaticResource BaseButton}" Command="{TemplateBinding Command}">
+                        <StackPanel Orientation="Horizontal" Width="150">
+                            <ContentControl Content="{TemplateBinding Tag}"  />
+                            <TextBlock VerticalAlignment="Center" 
+                                       HorizontalAlignment="Center" 
+                                       Margin="20 0 0 0"
+                                       Foreground="{StaticResource White}"
+                                       Text="{TemplateBinding Content}"/>
+                        </StackPanel>
+                    </Button>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- КНОПКИ УДАЛИТЬ, ИЗМЕНИТЬ, ЗАКРЫТЬ, МИНИМИЗАЦИИ, ПОДТВЕРДИТЬ -->
+    <Style x:Key="BaseFunctionButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="False">
+                <Setter Property="Foreground" Value="{StaticResource IconColor}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <!-- цвета при наведении на кнопки -->
+    <Style x:Key="BtnDarkGray" TargetType="Button" BasedOn="{StaticResource BaseFunctionButton}">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource DarkGrey}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style x:Key="BtnRed" TargetType="Button" BasedOn="{StaticResource BaseFunctionButton}">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource Red}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="BtnGreen" TargetType="Button"
+           BasedOn="{StaticResource BaseFunctionButton}">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource Green}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="BtnWhite" TargetType="Button"
+           BasedOn="{StaticResource BaseFunctionButton}">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource White}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- кнопки на базовых стилях с приемом тега - иконки кнопки -->    
+    <Style x:Key="ButtonGray" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Button Style="{StaticResource BtnDarkGray}" Command="{TemplateBinding Command}">
+                        <ContentControl Content="{TemplateBinding Tag}" />
+                    </Button>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ButtonRed" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Button Style="{StaticResource BtnRed}" Command="{TemplateBinding Command}">
+                        <ContentControl Content="{TemplateBinding Tag}" />
+                    </Button>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ButtonGreen" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Button Style="{StaticResource BtnGreen}" Command="{TemplateBinding Command}">
+                        <ContentControl Content="{TemplateBinding Tag}" />
+                    </Button>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ButtonWhite" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Button Style="{StaticResource BtnWhite}" Command="{TemplateBinding Command}">
+                        <ContentControl Content="{TemplateBinding Tag}" />
+                    </Button>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- стиль кнопки подтверждения -->
+    <Style x:Key="ButtonConfirm" TargetType="Button"
+           BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
+        <Setter Property="Width" Value="100" />
+    </Style>
+
+    <Style x:Key="ButtonCancel" TargetType="Button"
+           BasedOn="{StaticResource MaterialDesignFlatButton}">
+        <Setter Property="Margin" Value="0 0 10 0" />
+    </Style>
+
+</ResourceDictionary>

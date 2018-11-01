@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:passwordManager.Styles">
+
+    <SolidColorBrush x:Key="DarkBlue">#17212B</SolidColorBrush>
+    <SolidColorBrush x:Key="LightBlue">#434D5B</SolidColorBrush>
+    <SolidColorBrush x:Key="White">#ffffff</SolidColorBrush>
+    <SolidColorBrush x:Key="IconCopy">Grey</SolidColorBrush>
+    <SolidColorBrush x:Key="DarkGrey">#343434</SolidColorBrush>
+    <SolidColorBrush x:Key="AboutLbl">WhiteSmoke</SolidColorBrush>
+    <SolidColorBrush x:Key="IconColor">#9E9E9E</SolidColorBrush>
+    <SolidColorBrush x:Key="Red">Red</SolidColorBrush>
+    <SolidColorBrush x:Key="Green">Green</SolidColorBrush>
+    <SolidColorBrush x:Key="LowGray">#999DA2</SolidColorBrush>
+    
+</ResourceDictionary>

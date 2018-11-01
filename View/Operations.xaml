@@ -1,0 +1,53 @@
+﻿<Window x:Class="passwordManager.View.Operations"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:passwordManager.View"
+        mc:Ignorable="d"
+        
+        xmlns:res="clr-namespace:passwordManager.Properties"
+        WindowStyle="None" WindowStartupLocation="CenterScreen"
+        BorderThickness="0.5" ResizeMode="NoResize"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Password manager" Height="520" Width="350">
+
+    <x:Code>
+        <![CDATA[            
+        private void DragMove(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+    ]]>
+    </x:Code>
+
+    <Grid Background="{StaticResource DarkBlue}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <!-- ОбЪеденение для перетаскивания -->
+        <Grid Grid.ColumnSpan="3" Background="Transparent" MouseLeftButtonDown="DragMove" />
+        <!-- Системные кнопки -->
+        <StackPanel Grid.Row="0"  Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 8 8 0">
+            <Button Style="{StaticResource ButtonWhite}" Tag="{StaticResource IconWindowMinimize}" ToolTip="{x:Static res:Resources.toolTipSysTurn}" Command="{Binding BtnHide}" />
+            <Button Style="{StaticResource ButtonRed}" Tag="{StaticResource IconWindowClose}" ToolTip="{x:Static res:Resources.toolTipSysClose}" Command="{Binding BtnClose}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Margin="20 0 20 0">
+            <TextBlock Style="{StaticResource TitleForm}" Text="" x:Name="TitleForm" />
+            <TextBox Style="{StaticResource TextBoxWriter}" materialDesign:HintAssist.Hint="{x:Static res:Resources.lblTitle}" />
+            <TextBox Style="{StaticResource TextBoxWriter}" materialDesign:HintAssist.Hint="{x:Static res:Resources.lblLogin}" />
+            <PasswordBox Style="{StaticResource PasswordBoxWriter}" materialDesign:HintAssist.Hint="{x:Static res:Resources.lblPass}" />
+            <TextBox Style="{StaticResource TextBoxWriter}" materialDesign:HintAssist.Hint="{x:Static res:Resources.lblWeb}" />
+            <TextBox Style="{StaticResource TextAreaWriter}" materialDesign:HintAssist.Hint="{x:Static res:Resources.lblNote}" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 30 0 0">
+                <Button Style="{StaticResource ButtonCancel}" Content="{x:Static res:Resources.btnCancel}"/>
+                <Button Style="{StaticResource ButtonConfirm}" Content="{x:Static res:Resources.btnAccent}" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
