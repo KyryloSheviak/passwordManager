@@ -21,7 +21,44 @@
     ]]>
     </x:Code>
 
-    <Grid Background="{StaticResource DarkBlue}">
+
+    <materialDesign:DialogHost>
+        <materialDesign:DialogHost.DialogContent>
+            <StackPanel Margin="16">
+                <TextBlock Text="Password Generator" />
+                <TextBox Margin="0 8 0 0" HorizontalAlignment="Stretch" />
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        IsDefault="True"
+                        Margin="0 8 8 0"
+                        Command="materialDesign:DialogHost.CloseDialogCommand">
+                        <Button.CommandParameter>
+                            <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                True
+                            </system:Boolean>
+                        </Button.CommandParameter>
+                        ACCEPT
+                    </Button>
+                    <Button
+          Style="{StaticResource MaterialDesignFlatButton}"
+          IsCancel="True"
+          Margin="0 8 8 0"
+          Command="materialDesign:DialogHost.CloseDialogCommand">
+                        <Button.CommandParameter>
+                            <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                False
+                            </system:Boolean>
+                        </Button.CommandParameter>
+                        CANCEL
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </materialDesign:DialogHost.DialogContent>
+        
+        
+        
+        <Grid Background="{StaticResource DarkBlue}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
@@ -41,7 +78,7 @@
             <TextBlock Style="{StaticResource TitleForm}" Text="" x:Name="TitleForm" />
             <TextBox Style="{StaticResource TextBoxWriter}" materialDesign:HintAssist.Hint="{x:Static res:Resources.lblTitle}" />
             <TextBox Style="{StaticResource TextBoxWriter}" materialDesign:HintAssist.Hint="{x:Static res:Resources.lblLogin}" />
-            <PasswordBox Style="{StaticResource PasswordBoxWriter}" materialDesign:HintAssist.Hint="{x:Static res:Resources.lblPass}" />
+            <PasswordBox Style="{StaticResource TextBoxCreatePass}" materialDesign:HintAssist.Hint="{x:Static res:Resources.lblPass}" />
             <TextBox Style="{StaticResource TextBoxWriter}" materialDesign:HintAssist.Hint="{x:Static res:Resources.lblWeb}" />
             <TextBox Style="{StaticResource TextAreaWriter}" materialDesign:HintAssist.Hint="{x:Static res:Resources.lblNote}" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 30 0 0">
@@ -50,4 +87,6 @@
             </StackPanel>
         </StackPanel>
     </Grid>
+
+    </materialDesign:DialogHost>
 </Window>

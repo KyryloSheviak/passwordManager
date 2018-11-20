@@ -51,30 +51,37 @@
             <Line Style="{StaticResource Separator}" />
             <Button Style="{StaticResource MenuButton}" Tag="{StaticResource IconPlus}" Content="{x:Static res:Resources.btnAddNew}" Command="{Binding BtnNew}" />
             <Button Style="{StaticResource MenuButton}" Tag="{StaticResource IconKey}"  Content="{x:Static res:Resources.btnAllItem}" />
+            <Button Style="{StaticResource MenuButton}" Tag="{StaticResource IconStar}" Content="{x:Static res:Resources.btnFavorites}" />
             <Button Style="{StaticResource MenuButton}" Tag="{StaticResource IconArchive}" Content="{x:Static res:Resources.btnArchive}" />
             <Line Style="{StaticResource Separator}" />
             <Button Style="{StaticResource MenuButton}" Tag="{StaticResource IconSettings}" Content="{x:Static res:Resources.btnSettings}" />
             <Button Style="{StaticResource MenuButton}" Tag="{StaticResource IconInfo_1}" Content="{x:Static res:Resources.btnInfo}" />
-            
-            <TextBlock VerticalAlignment="Bottom" Style="{StaticResource About}"
-                   Text="{Binding StringFormat=Number of records: {0}, ElementName=listCollection, Path=Items.Count}" />
-                
+            <!--<TextBlock VerticalAlignment="Bottom" Style="{StaticResource About}"
+                   Text="{Binding StringFormat=Number of records: {0}, ElementName=listCollection, Path=Items.Count}" />-->
         </StackPanel>
         
         <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource About}" />
         <!-- КОНЕЦ ЛЕВОГО МЕНЮ -->
 
         <!-- ПОИСК И СПИСОК-->
-        <TextBox Grid.Column="1" Grid.Row="0" Margin="20 0 20 0" FontSize="16"
-                 materialDesign:HintAssist.Hint="Search..." Foreground="White" />
+        <TextBox Grid.Column="1" Grid.Row="0" Style="{StaticResource TextBoxSearch}" />
         <ListBox Grid.Column="1" Grid.Row="1" Name="listCollection" VirtualizingPanel.ScrollUnit="Pixel">
-            <StackPanel Margin="12 0 0 0">
-                <TextBlock Text="Goggle inc" Style="{StaticResource ListHeader}"  />
-                <TextBlock Text="sdgdfbg" Style="{StaticResource ListContent}" />
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Apple" Height="30" Width="30" VerticalAlignment="Center" />
+                <StackPanel Margin="12 0 0 0">
+                    <TextBlock Text="Goggle inc" Style="{StaticResource ListHeader}"  />
+                    <TextBlock Text="sdgdfbg" Style="{StaticResource ListContent}" />
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Google" Height="30" Width="30" VerticalAlignment="Center" />
+                <StackPanel Margin="12 0 0 0">
+                    <TextBlock Text="Goggle inc" Style="{StaticResource ListHeader}"  />
+                    <TextBlock Text="sdgdfbg" Style="{StaticResource ListContent}" />
+                </StackPanel>
             </StackPanel>
             
-            <TextBlock HorizontalAlignment="Center" Width="280" Style="{StaticResource About}" Margin="0"
-                       Text="{Binding StringFormat=Number of records: {0}, ElementName=listCollection, Path=Items.Count}" />
         </ListBox>
 
         <!-- ОПИСАНИЕ -->

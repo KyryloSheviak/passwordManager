@@ -141,6 +141,9 @@
   <data name="btnClc" xml:space="preserve">
     <value>CLEAR</value>
   </data>
+  <data name="btnFavorites" xml:space="preserve">
+    <value>Favorites</value>
+  </data>
   <data name="btnIN" xml:space="preserve">
     <value>SIGN IN</value>
   </data>

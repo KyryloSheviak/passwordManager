@@ -81,5 +81,45 @@
         <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
     </Style>
+
+    <!-- описание структуры текстового поля с кнопкой генерации пароля -->
+    <Style x:Key="TextBoxCreatePass" TargetType="PasswordBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="PasswordBox">
+                    <Grid>
+                        <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
+                        <PasswordBox Grid.Column="0" Style="{StaticResource PasswordBoxWriter}" Padding="0 0 25 0" />
+                        <Button HorizontalAlignment="Right" Grid.Column="1" Style="{StaticResource BaseButton}" 
+                                Margin="0 0 0 -10"
+                                Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" >
+                            <materialDesign:PackIcon Kind="KeyVariant" Height="25" Width="25" />
+                        </Button>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- описание структуры текстового поля с иконкой поиска -->
+    <Style x:Key="TextBoxSearch" TargetType="TextBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Grid Margin="10 0 20 0">
+                        <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="0" 
+                                 Foreground="White"
+                                 Padding="15 0 0 0"   
+                                 FontSize="{StaticResource Regular}"
+                                 materialDesign:HintAssist.Hint="Search..."/>
+                        <materialDesign:PackIcon Grid.Column="1" Kind="Magnify" Height="25" Width="25"
+                                                 VerticalAlignment="Center" Margin="0 10 0 0" 
+                                                 Foreground="{StaticResource LowGray}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     
 </ResourceDictionary>

@@ -133,6 +133,15 @@ namespace passwordManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Favorites.
+        /// </summary>
+        public static string btnFavorites {
+            get {
+                return ResourceManager.GetString("btnFavorites", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SIGN IN.
         /// </summary>
         public static string btnIN {
