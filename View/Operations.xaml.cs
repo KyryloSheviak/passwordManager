@@ -11,7 +11,7 @@ namespace passwordManager.View
         public Operations()
         {
             InitializeComponent();
-            //DataContext = new OperationsVM(this);
+            DataContext = new OperationsVM(this);
         }
     }
 }

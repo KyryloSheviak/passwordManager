@@ -71,7 +71,7 @@
         <Setter Property="materialDesign:HintAssist.FloatingScale" Value="0.50" />
     </Style>
     <!-- поле многострочного ввода -->
-    <Style x:Key="TextAreaWriter" TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextAreaTextBox}">
+    <Style x:Key="TextAreaWriter" TargetType="TextBox" BasedOn="{StaticResource MaterialDesignOutlinedTextFieldTextBox}">
         <Setter Property="Margin" Value="0 20 0 0" />
         <Setter Property="FontSize" Value="{StaticResource Regular}" />
         <Setter Property="FontFamily" Value="{StaticResource BaseFont}" />
@@ -90,9 +90,10 @@
                     <Grid>
                         <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
                         <PasswordBox Grid.Column="0" Style="{StaticResource PasswordBoxWriter}" Padding="0 0 25 0" />
-                        <Button HorizontalAlignment="Right" Grid.Column="1" Style="{StaticResource BaseButton}" 
-                                Margin="0 0 0 -10"
-                                Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" >
+                        <Button HorizontalAlignment="Right" Grid.Column="1"
+                                materialDesign:RippleAssist.IsCentered="True"
+                                Style="{StaticResource ButtonIconChangeColor}"
+                                Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}">
                             <materialDesign:PackIcon Kind="KeyVariant" Height="25" Width="25" />
                         </Button>
                     </Grid>
@@ -121,5 +122,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
 </ResourceDictionary>

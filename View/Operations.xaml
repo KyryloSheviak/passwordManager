@@ -21,72 +21,104 @@
     ]]>
     </x:Code>
 
-
-    <materialDesign:DialogHost>
+    <materialDesign:DialogHost Style="{StaticResource MaterialDesignEmbeddedDialogHost}">
         <materialDesign:DialogHost.DialogContent>
-            <StackPanel Margin="16">
-                <TextBlock Text="Password Generator" />
-                <TextBox Margin="0 8 0 0" HorizontalAlignment="Stretch" />
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button
-                        Style="{StaticResource MaterialDesignFlatButton}"
-                        IsDefault="True"
-                        Margin="0 8 8 0"
-                        Command="materialDesign:DialogHost.CloseDialogCommand">
-                        <Button.CommandParameter>
-                            <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
-                                True
-                            </system:Boolean>
-                        </Button.CommandParameter>
-                        ACCEPT
-                    </Button>
-                    <Button
-          Style="{StaticResource MaterialDesignFlatButton}"
-          IsCancel="True"
-          Margin="0 8 8 0"
-          Command="materialDesign:DialogHost.CloseDialogCommand">
-                        <Button.CommandParameter>
-                            <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
-                                False
-                            </system:Boolean>
-                        </Button.CommandParameter>
-                        CANCEL
-                    </Button>
+            <StackPanel Margin="-10" Background="{StaticResource DarkBlue}">
+                <StackPanel Margin="20">
+                    <TextBlock Text="Password Generator" Style="{StaticResource BaseBlock}" 
+                           Margin="0 10 0 10" HorizontalAlignment="Center" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="205" />
+                            <ColumnDefinition Width="65" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Length" VerticalAlignment="Center" Style="{StaticResource BaseBlock}" />
+
+                        <Slider Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Width="140"
+                                TickFrequency="5" Minimum="6" Maximum="50" Value="{Binding Count}" Margin="0 0 10 0" />
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Include numbers" Style="{StaticResource BaseBlock}" />
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Include symbols" Style="{StaticResource BaseBlock}" />
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Include uppercase characters" Style="{StaticResource BaseBlock}" />
+                        <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Text="{Binding Count}" Style="{StaticResource BaseBlock}" />
+
+                        <ToggleButton Grid.Column="1" Grid.Row="1" IsChecked="{Binding Numbers}" Command="{Binding GetPassword}" />
+                        <ToggleButton Grid.Column="1" Grid.Row="2" IsChecked="{Binding Sumbols}" Command="{Binding GetPassword}" />
+                        <ToggleButton Grid.Column="1" Grid.Row="3" IsChecked="{Binding UppChar}" Command="{Binding GetPassword}" />
+
+                        <TextBlock Grid.Column="0" Grid.Row="4" Text="Refresh" Style="{StaticResource BaseBlock}" />
+                        <Button Grid.Column="1" Grid.Row="4" 
+                                Style="{StaticResource ToolButton}"
+                                Tag="{StaticResource IconRefresh}" 
+                                Command="{Binding GetPassword}"
+                                materialDesign:RippleAssist.IsDisabled="True"/>
+                    </Grid>
+
+                    <TextBlock Text="{Binding Password}" Style="{StaticResource BaseBlock}" Height="42"
+                               HorizontalAlignment="Center" TextWrapping="Wrap" Margin="0 10 0 10" />
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button
+                            Style="{StaticResource ButtonCancel}"
+                            Command="materialDesign:DialogHost.CloseDialogCommand">
+                            <Button.CommandParameter>
+                                <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                    False
+                                </system:Boolean>
+                            </Button.CommandParameter>
+                            CANCEL
+                        </Button>
+                        <Button
+                            Style="{StaticResource ButtonConfirm}"
+                            Command="materialDesign:DialogHost.CloseDialogCommand">
+                            <Button.CommandParameter>
+                                <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                    True
+                                </system:Boolean>
+                            </Button.CommandParameter>
+                            ACCEPT
+                        </Button>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
         </materialDesign:DialogHost.DialogContent>
-        
-        
-        
+
         <Grid Background="{StaticResource DarkBlue}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <!-- ОбЪеденение для перетаскивания -->
-        <Grid Grid.ColumnSpan="3" Background="Transparent" MouseLeftButtonDown="DragMove" />
-        <!-- Системные кнопки -->
-        <StackPanel Grid.Row="0"  Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 8 8 0">
-            <Button Style="{StaticResource ButtonWhite}" Tag="{StaticResource IconWindowMinimize}" ToolTip="{x:Static res:Resources.toolTipSysTurn}" Command="{Binding BtnHide}" />
-            <Button Style="{StaticResource ButtonRed}" Tag="{StaticResource IconWindowClose}" ToolTip="{x:Static res:Resources.toolTipSysClose}" Command="{Binding BtnClose}" />
-        </StackPanel>
-
-        <StackPanel Grid.Row="1" Margin="20 0 20 0">
-            <TextBlock Style="{StaticResource TitleForm}" Text="" x:Name="TitleForm" />
-            <TextBox Style="{StaticResource TextBoxWriter}" materialDesign:HintAssist.Hint="{x:Static res:Resources.lblTitle}" />
-            <TextBox Style="{StaticResource TextBoxWriter}" materialDesign:HintAssist.Hint="{x:Static res:Resources.lblLogin}" />
-            <PasswordBox Style="{StaticResource TextBoxCreatePass}" materialDesign:HintAssist.Hint="{x:Static res:Resources.lblPass}" />
-            <TextBox Style="{StaticResource TextBoxWriter}" materialDesign:HintAssist.Hint="{x:Static res:Resources.lblWeb}" />
-            <TextBox Style="{StaticResource TextAreaWriter}" materialDesign:HintAssist.Hint="{x:Static res:Resources.lblNote}" />
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 30 0 0">
-                <Button Style="{StaticResource ButtonCancel}" Content="{x:Static res:Resources.btnCancel}"/>
-                <Button Style="{StaticResource ButtonConfirm}" Content="{x:Static res:Resources.btnAccent}" />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <!-- ОбЪеденение для перетаскивания -->
+            <Grid Grid.ColumnSpan="3" Background="Transparent" MouseLeftButtonDown="DragMove" />
+            <!-- Системные кнопки -->
+            <StackPanel Grid.Row="0"  Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 8 8 0">
+                <Button Style="{StaticResource ButtonWhite}" Tag="{StaticResource IconWindowMinimize}" ToolTip="{x:Static res:Resources.toolTipSysTurn}" Command="{Binding BtnHide}" />
+                <Button Style="{StaticResource ButtonRed}" Tag="{StaticResource IconWindowClose}" ToolTip="{x:Static res:Resources.toolTipSysClose}" Command="{Binding BtnClose}" />
             </StackPanel>
-        </StackPanel>
-    </Grid>
 
+            <StackPanel Grid.Row="1" Margin="20 0 20 0">
+                <TextBlock Style="{StaticResource TitleForm}" Text="" x:Name="TitleForm" />
+                <TextBox Style="{StaticResource TextBoxWriter}" materialDesign:HintAssist.Hint="{x:Static res:Resources.lblTitle}" />
+                <TextBox Style="{StaticResource TextBoxWriter}" materialDesign:HintAssist.Hint="{x:Static res:Resources.lblLogin}" />
+                <PasswordBox Style="{StaticResource TextBoxCreatePass}"
+                             materialDesign:HintAssist.Hint="{x:Static res:Resources.lblPass}" />
+                <TextBox Style="{StaticResource TextBoxWriter}" materialDesign:HintAssist.Hint="{x:Static res:Resources.lblWeb}" />
+                <TextBox Style="{StaticResource TextAreaWriter}" materialDesign:HintAssist.Hint="{x:Static res:Resources.lblNote}" />
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 30 0 0">
+                    <Button Style="{StaticResource ButtonCancel}" Content="{x:Static res:Resources.btnCancel}" />
+                    <Button Style="{StaticResource ButtonConfirm}" Content="{x:Static res:Resources.btnAccent}" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
     </materialDesign:DialogHost>
 </Window>

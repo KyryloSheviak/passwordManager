@@ -70,7 +70,7 @@
             <TextBox Style="{StaticResource TextBoxWriter}" materialDesign:HintAssist.Hint="{x:Static res:Resources.lblLogin}" />
             <PasswordBox Style="{StaticResource PasswordBoxWriter}" materialDesign:HintAssist.Hint="{x:Static res:Resources.lblPass}" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 30 0 0">
-                <Button Style="{StaticResource ButtonCancel}" Content="{x:Static res:Resources.btnRegistr}" Command="{Binding BtnRegistration}" />
+                <Button Style="{StaticResource ButtonCancel}" Content="{x:Static res:Resources.btnRegistr}" Command="{Binding BtnRegistration}" IsCancel="False" />
                 <Button Style="{StaticResource ButtonConfirm}" Content="{x:Static res:Resources.btnIN}" Command="{Binding BtnAccent}" />
             </StackPanel>
         </StackPanel>
